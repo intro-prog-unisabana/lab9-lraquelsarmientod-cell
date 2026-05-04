@@ -13,11 +13,11 @@ class Aircraft:
 
 
 if __name__ == "__main__":
-    model = input().strip()
+    model = input()
     aircraft = Aircraft(model)
 
     while True:
-        command = input().strip()
+        command = input()
 
         if command == "X":
             break
@@ -30,4 +30,5 @@ if __name__ == "__main__":
         elif action == "D":
             aircraft.descend(value)
 
+    print(aircraft.model)
     print(aircraft.altitude)
