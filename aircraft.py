@@ -10,30 +10,20 @@ class Aircraft:
     def descend(self, feet):
         self.altitude -= feet
 # FREEZE CODE END
+
+
 if __name__ == "__main__":
     model = input().strip()
     aircraft = Aircraft(model)
 
     while True:
-        try:
-            command = input().strip()
-        except EOFError:
-            break
+        command = input().strip()
 
         if command == "X":
             break
 
-        parts = command.split()
-
-        if len(parts) != 2:
-            continue
-
-        action, value = parts
-
-        try:
-            value = int(value)
-        except ValueError:
-            continue
+        action, value = command.split()
+        value = int(value)
 
         if action == "A":
             aircraft.climb(value)
