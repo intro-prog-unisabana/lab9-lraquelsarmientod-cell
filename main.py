@@ -1,11 +1,9 @@
 from utils import person_data, balance_summary
-from bank_account import BankAccount
 
 def main():
-    people = []  # List to store all Person objects
+    people = []
 
     while True:
-        # Display menu
         print("Choose an option:")
         print("1. Add a new person")
         print("2. Add an account to a person")
@@ -14,46 +12,41 @@ def main():
 
         choice = input().strip()
 
-      # Option 1: Add a new person
         if choice == "1":
             person = person_data()
             people.append(person)
 
-        # Option 2: Add an account to an existing person
         elif choice == "2":
-            name = input("Enter the person's name: ")
+            name = input("Enter the person's name:\n")
 
-            found = False
-            for person in people:
-                if person.name == name:
-                    acc_number = input("Enter a 4-digit account number: ")
-                    balance = float(input("Enter the initial balance: "))
-
-                    account = BankAccount(acc_number, balance)
-                    person.add_account(account)
-
-                    found = True
+            found = None
+            for p in people:
+                if p.name == name:
+                    found = p
                     break
 
-            if not found:
+            if found is None:
                 print("Person not found.")
+            else:
+                account_number = int(input("Enter a 4-digit account number:\n"))
+                balance = float(input("Enter the initial balance:\n"))
 
-        # Option 3: Show all balances
+                from bank_account import BankAccount
+                account = BankAccount(account_number, balance)
+                found.add_account(account)
+
         elif choice == "3":
             if len(people) == 0:
                 print("No data to show.")
             else:
                 balance_summary(people)
 
-        # Option 4: Quit
         elif choice == "4":
             print("Goodbye!")
             break
 
-        # Invalid input
         else:
-            print("Invalid option. Please choose 1-4.")
+            print("Invalid option. Please try again.")
 
 if __name__ == "__main__":
     main()
-
