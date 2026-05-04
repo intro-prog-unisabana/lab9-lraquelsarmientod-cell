@@ -1,4 +1,6 @@
 # utils.py
+from person import Person
+from bank_account import BankAccount
 def person_data():
     name = input("Enter the person's name: ")
     person = Person(name)
