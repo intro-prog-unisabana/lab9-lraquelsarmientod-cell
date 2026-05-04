@@ -15,12 +15,17 @@ if __name__ == "__main__":
     aircraft = Aircraft(model)
 
     while True:
-        command = input()
+        command = input().strip()
 
         if command == "X":
             break
 
-        action, value = command.split()
+        parts = command.split()
+
+        if len(parts) != 2:
+            continue  
+
+        action, value = parts
         value = int(value)
 
         if action == "A":
@@ -28,5 +33,4 @@ if __name__ == "__main__":
         elif action == "D":
             aircraft.descend(value)
 
-    print(aircraft.model)
     print(aircraft.altitude)
