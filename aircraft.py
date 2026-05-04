@@ -11,7 +11,6 @@ class Aircraft:
         self.altitude -= feet
 # FREEZE CODE END
 
-
 if __name__ == "__main__":
     model = input()
     aircraft = Aircraft(model)
