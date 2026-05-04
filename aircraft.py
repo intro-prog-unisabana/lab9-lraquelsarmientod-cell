@@ -11,11 +11,14 @@ class Aircraft:
         self.altitude -= feet
 # FREEZE CODE END
 if __name__ == "__main__":
-    model = input()
+    model = input().strip()
     aircraft = Aircraft(model)
 
     while True:
-        command = input().strip()
+        try:
+            command = input().strip()
+        except EOFError:
+            break
 
         if command == "X":
             break
@@ -23,10 +26,14 @@ if __name__ == "__main__":
         parts = command.split()
 
         if len(parts) != 2:
-            continue  
+            continue
 
         action, value = parts
-        value = int(value)
+
+        try:
+            value = int(value)
+        except ValueError:
+            continue
 
         if action == "A":
             aircraft.climb(value)
