@@ -18,10 +18,3 @@ class BankAccount:
         acc_str = str(self.account_number)
         last_digits = acc_str[-2:]
         return f"Account Number: **{last_digits}\nCurrent Balance: {self.balance:.2f}"
-    
-    def balance_summary(people):
-    for person in people:
-        total = 0
-        for acc in person.accounts:
-            total += acc.balance
-        print(f"{person.name} : {total:.2f}")
