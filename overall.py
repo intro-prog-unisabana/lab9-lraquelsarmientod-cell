@@ -44,3 +44,5 @@ while True:
     elif choice == "5":
         print("Goodbye!")
         break
+    else:
+        print("Invalid option. Please try again.")
