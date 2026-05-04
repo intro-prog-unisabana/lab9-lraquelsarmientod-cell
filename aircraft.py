@@ -10,21 +10,23 @@ class Aircraft:
     def descend(self, feet):
         self.altitude -= feet
 # FREEZE CODE END
-name = input()
-altitude = 0
+if __name__ == "__main__":
+    model = input()
+    aircraft = Aircraft(model)
 
-while True:
-    command = input()
+    while True:
+        command = input()
 
-    if command == "X":
-        break
+        if command == "X":
+            break
 
-    action, value = command.split()
-    value = int(value)
+        action, value = command.split()
+        value = int(value)
 
-    if action == "A":
-        altitude += value
-    elif action == "D":
-        altitude -= value
+        if action == "A":
+            aircraft.climb(value)
+        elif action == "D":
+            aircraft.descend(value)
 
-print(f"{name}\n{altitude}")
+    print(aircraft.model)
+    print(aircraft.altitude)
