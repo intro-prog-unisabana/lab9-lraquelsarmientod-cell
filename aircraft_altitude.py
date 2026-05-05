@@ -10,8 +10,16 @@ while True:
         break
 
     parts = command.split()
+
+    if len(parts) != 2:
+        continue  # evita crash
+
     action = parts[0]
-    feet = int(parts[1])
+    
+    try:
+        feet = int(parts[1])
+    except ValueError:
+        continue  # evita crash si no es número
 
     if action == "A":
         plane.ascend(feet)
